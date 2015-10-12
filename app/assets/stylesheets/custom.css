@@ -1,0 +1,161 @@
+body {
+  padding:20px;
+  padding-bottom: 0px;
+  height:100%;
+  background: -webkit-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  background: -o-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  background: -moz-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  background: linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  min-height: 670px;
+}
+table {
+  width:80%;
+}
+table, tr, td, th {
+  border:1px solid black;
+  border-collapse:collapse;
+}
+
+tr:nth-child(odd) {
+  background: #D1F0FF;
+}
+
+tr:nth-child(even) {
+  background: #FAFAEE;
+}
+
+td {
+}
+
+
+td, th {
+  font-size:14px;
+  font-weight:bold;
+  padding:15px;
+}
+
+.text_center {
+  text-align: center;
+  font-size: 16px;
+}
+
+.container {
+  padding: 20px;
+}
+.container-left {
+  width:50%;
+  float:left;
+}
+.order_dropdown {
+  font-size:16px;
+  margin:10px;
+}
+
+.post_container > div{
+  padding:15px;
+}
+
+.post_title {
+  color:#0066CC;
+  border-bottom: 1px solid grey
+}
+.post_content{
+  color:#00CCCC;
+  border-bottom: 1px solid grey
+}
+.post_vote {
+  font-size:23px;
+  color:#00CCFF;
+  border-bottom: 1px solid grey
+}
+
+.post_label {
+  width:30%;
+  font-size:25px;
+  float:left;
+}
+
+.post_data {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.glyphicon-thumbs-up, .glyphicon-trash {
+  cursor: pointer;
+}
+.post_likes {
+  padding-left:20px;
+}
+
+.post-comment-container {
+
+}
+
+.post-comment-container .left-container {
+  width:50%;
+  float:left;
+  padding-right: 15px;
+  color:#FF9999;
+  overflow: auto;
+  max-height:380px;
+}
+
+.post-comment-container .left-container ul li {
+  color:#DB704D;
+  font-size:18px;
+}
+
+.post-comment-container .left-container ul li:nth-child(odd) {
+  color:#33ADFF;
+}
+
+.comment_box {
+  border-top: 0.5px dotted grey;
+  padding:10px;
+}
+
+.comment_content {
+  max-width:80%;
+  float:left;
+  font-family: Comic Sans MS, cursive, sans-serif;
+  font-style:italic;
+  word-wrap:break-word;
+}
+
+.comment_like {
+  float: right;
+  cursor: pointer;
+}
+
+.comment_delete {
+  padding-left: 15px;
+}
+
+.home_page {
+  position: absolute;
+  left:29%;
+  top:45%;
+  color:#33ADFF
+}
+
+.user_forms {
+  border: 1px solid #665B48;
+  margin: auto;
+  width: 50%;
+}
+.form_header {
+  text-align: center;
+  font-size:24px;
+  background:#7FB1B3;
+  padding: 10px;
+  font-family: Comic Sans MS, cursive, sans-serif;
+  color:white;
+}
+.form_fields {
+  padding:25px;
+}
+
+.user_forms legend {
+  font-family: Comic Sans MS, cursive, sans-serif;
+  color:#665B48;
+}

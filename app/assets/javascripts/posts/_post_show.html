@@ -1,0 +1,46 @@
+<div class="post_container">
+  <div class="post_title">
+    <div class="post_label">Post Title </div>
+    <div class="post_data">{{post.title}}</div>
+  </div>
+  <div class="post_content clearfix">
+    <div class="post_label">Post Content </div>
+    <div class="post_data">{{post.content}}</div>
+  </div>
+  <div class="post_vote clearfix">
+    <div class="post_label">Like To vote</div>
+    <div class="post_data">
+      <span ng-click= "updatePostLikes(post)" class="glyphicon glyphicon-thumbs-up"></span>
+      <span class="post_likes">{{post.likes}}</span>
+    </div>
+  </div>
+<div class="post-comment-container">
+  <div class="left-container">
+    <h3>Comments</h3>
+    <form ng-submit="addComment(post)">
+      <fieldset>
+        <legend>Add A Comment</legend>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Comment" ng-model="comment.content"></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Comment</button>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="left-container">
+    <h3>Comments</h3>
+    <ul>
+      <li ng-repeat="comment in comment_list" class="comment_box">
+        <div class="comment_content">
+          {{comment.content}}
+        </div>
+        <div class="comment_like">
+          <span  ng-click="updateCommentLike(post,comment)" class="glyphicon glyphicon-thumbs-up"></span>
+          <span class="comment_likes">{{comment.likes}}</span>
+
+          <span ng-click = "deleteComment(post, comment)"class=" glyphicon glyphicon-trash comment_delete"></span>
+        </div>
+      </li>
+  </div>
+</div>

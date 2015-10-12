@@ -1,0 +1,19 @@
+<div class="user_forms">
+  <div class="form_header">
+    <span>Welcome In Flapper App</span>
+  </div>
+  <div class="form_fields">
+    <form ng-submit="logIn()">
+      <fieldset>
+        <legend>Log In</legend>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email Id" ng-model="user.email"></input>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Password" ng-model="user.password"></input>
+          </div>
+          <button type="submit" class="btn btn-primary">LogIn</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
