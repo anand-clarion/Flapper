@@ -3,20 +3,53 @@
     <span>Welcome In Flapper App</span>
   </div>
   <div class="form_fields">
-    <form ng-submit="register()">
+    <form ng-submit="register()" name="regForm" novalidate>
       <fieldset>
         <legend>Be A Part Of Our Family</legend>
+
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name" ng-model="user.name"></input>
+            <input type="text" class="form-control" placeholder="Name" ng-model="user.name" required ng-minlength="3" ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }"></input>
+
+            <span ng-show="regForm.$submitted || regForm.uName.$touched && regForm.uName.$error">
+              <div ng-messages="regForm.uName.$error">
+                <span class="error" ng-message="required">Please Enter Your good name</span>
+                <span class="error" ng-message="minlength">Please use Atleast 3 character name</span>
+                <span class="error" ng-message="maxlength">Name Length is too long</span>
+              </div>
+            </span>
           </div>
+
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email Id" ng-model="user.email"></input>
+            <input type="email" class="form-control" placeholder="Email Id" ng-model="user.email" name="uEmail" required></input>
+
+            <span ng-show="regForm.$submitted || regForm.uEmail.$touched && regForm.uEmail.$error">
+              <div ng-messages="regForm.uEmail.$error">
+                <span class="error" ng-message="required">Please Enter Email</span>
+                <span class="error" ng-message="email">Please Enter a Valid Email like - hello@example.com</span>
+              </div>
+            </span>
           </div>
+
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Password" ng-model="user.password"></input>
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password" name="uPassword" required></input>
+
+            <span ng-show="regForm.$submitted || regForm.uPassword.$touched && regForm.uPassword.$invalid">
+              <div ng-messages="regForm.uPassword.$error">
+                <span class="error" ng-message="required">Please choose password</span>
+              </div>
+            </span>
           </div>
+
           <div class="form-group">
-            <input type="text" class="form-control" placeholder=" Confirm Password" ng-model="user.confirm_password"></input>
+            <input type="password" class="form-control" placeholder=" Confirm Password" ng-model="user.confirm_password" name="uCnfrmPassword" required password-verify></input>
+
+            <span ng-show="regForm.$submitted || regForm.uCnfrmPassword.$touched && regForm.uCnfrmPassword.$invalid">
+              <div ng-messages="regForm.uCnfrmPassword.$error">
+                <span class="error" ng-message="required">Confirmation Can't be blank</span>
+                <span class="error" ng-message="passwordVerify">Password confirmation doesn't match</span>
+              </div>
+            </span>
+
           </div>
           <button type="submit" class="btn btn-primary">Register</button>
       </fieldset>

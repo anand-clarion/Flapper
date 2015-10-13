@@ -2,46 +2,35 @@ var auth = angular.module("auth", [])
 
 auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore) {
 
-  $scope.user= {}
-  $rootScope.isSignedIn = $cookieStore.get('loggedin');
-
+  $scope.user ={}
+  // Initilize current user
   Auth.currentUser().then(function (user){
     $scope.user = user;
   });
 
-  $scope.refreshSession = function() {
-    $rootScope.isSignedIn = $cookieStore.get('loggedin');
-    Auth.currentUser().then(function (user){
-      $scope.user = user;
-    });
-  }
-
   // User log In
   $scope.logIn = function() {
     Auth.login($scope.user).then(function(user) {
-      $scope.user = user;
-      $cookieStore.put('loggedin', true);
-      $scope.refreshSession();
+      $rootScope.isSignedIn = true
       $location.path('/posts')
+    }, function(error){
+
     })
   }
 
   // New user Registration.
   $scope.register = function() {
-
     Auth.register($scope.user).then(function(user) {
-      $scope.user = user;
-      $cookieStore.put('loggedin', true);
-      $scope.refreshSession();
+      $rootScope.isSignedIn = true
       $location.path('/posts')
+    }, function(error) {
+
     })
   }
 
   $scope.logout = function() {
     Auth.logout().then(function() {
-      $scope.user = {}
-      $cookieStore.put('loggedin', false);
-      $rootScope.isSignedIn = $cookieStore.get('loggedin');
+      $rootScope.isSignedIn = false
       $location.path('/home')
     })
   }
@@ -58,4 +47,22 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
     $scope.user = {};
   });
 
+})
+
+// Custom validation to match Password Confirmation
+auth.directive("passwordVerify", function() {
+  return {
+    require: 'ngModel',
+
+    link: function(scope, element, attr, ctrl) {
+      ctrl.$validators.passwordVerify = function(modleValue, viewValue) {
+
+        if(scope.user.password === modleValue) {
+          return true;
+        }
+
+        return false;
+      }
+    }
+  }
 })

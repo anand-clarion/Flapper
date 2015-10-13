@@ -159,3 +159,16 @@ td, th {
   font-family: Comic Sans MS, cursive, sans-serif;
   color:#665B48;
 }
+
+ .form-group {
+  height:50px;
+}
+
+.error {
+  color:red;
+}
+.error:before{
+  content:"*";
+  font-size:16px;
+  padding:2px;
+}
