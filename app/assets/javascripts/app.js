@@ -1,9 +1,9 @@
 var app = angular.module("myApp", ['ngRoute', 'ngCookies',  'templates', 'home',
-                         'posts', 'Devise', 'auth', 'ngMessages']);
+                         'posts', 'Devise', 'auth', 'ngMessages', "flash"]);
 
 
 // To Handle the unauthorized 401 Error.
-app.factory('authHttpResponseInterceptor',function($q,$location){
+app.factory('authHttpResponseInterceptor',function($q,$location, Flash){
   return {
     response: function(response){
       if (response.status === 401) {
@@ -14,11 +14,12 @@ app.factory('authHttpResponseInterceptor',function($q,$location){
     responseError: function(rejection) {
       if (rejection.status === 401) {
           console.log("Response Error 401 we handeled it successfully",rejection);
-          if($location.path() == "/register") {
+          if($location.path() == "/register" || $location.path() == "/login" ) {
             console.clear();
           }
           else {
             $location.path('/login')
+            Flash.create('warning', "You need to sign up or login to access this action");
           }
       }
       return $q.reject(rejection);

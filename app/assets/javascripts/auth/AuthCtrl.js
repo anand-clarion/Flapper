@@ -1,8 +1,11 @@
 var auth = angular.module("auth", [])
 
-auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore) {
+auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore, Flash) {
+
+  Flash.dismiss();
 
   $scope.user ={}
+
   // Initilize current user
   Auth.currentUser().then(function (user){
     $scope.user = user;
@@ -13,8 +16,10 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
     Auth.login($scope.user).then(function(user) {
       $rootScope.isSignedIn = true
       $location.path('/posts')
+      message = "Welcome <b> " + user.name + " </b>You Have Successfully Logged in"
+      Flash.create('success', message);
     }, function(error){
-
+      Flash.create('danger', error.data.error);
     })
   }
 
@@ -23,15 +28,19 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
     Auth.register($scope.user).then(function(user) {
       $rootScope.isSignedIn = true
       $location.path('/posts')
+      message = "Welcome <b>" + user.name + "</b>"
+      Flash.create('success', message);
     }, function(error) {
-
+      Flash.create('danger', error.data.error);
     })
   }
 
   $scope.logout = function() {
-    Auth.logout().then(function() {
+    Auth.logout().then(function(previous_user) {
       $rootScope.isSignedIn = false
       $location.path('/home')
+      message = "Hey <b>" + previous_user.name + " </b> You Have Been Logged Out"
+      Flash.create('success', message);
     })
   }
 

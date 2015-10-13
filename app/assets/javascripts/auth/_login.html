@@ -3,7 +3,7 @@
     <span>Welcome In Flapper App</span>
   </div>
   <div class="form_fields">
-    <form novalidate ng-submit="logIn()" name="loginForm" class="login_form">
+    <form novalidate ng-submit=" loginForm.$valid && logIn()" name="loginForm" class="login_form">
       <fieldset>
         <legend>Log In</legend>
           <div class="form-group">
@@ -11,12 +11,12 @@
 
             <span ng-show="loginForm.$submitted || loginForm.uEmail.$touched && loginForm.uEmail.$invalid">
               <span class ="error" ng-show="loginForm.uEmail.$error.required">Please Enter Your Email</span>
-              <span class ="error" ng-show="loginForm.uEmail.$error.email">Please Enter a Valid Email like - hello@example.com</span>
+              <span class ="error" ng-show="loginForm.uEmail.$error.email">Please Enter a Valid Email</span>
             </span>
 
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" ng-model="user.confirm_password" name="uPassword" required></input>
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password" name="uPassword" required></input>
 
             <span ng-show="loginForm.$submitted || loginForm.uPassword.$touched && loginForm.uPassword.$invalid">
               <div ng-messages="loginForm.uPassword.$error">
