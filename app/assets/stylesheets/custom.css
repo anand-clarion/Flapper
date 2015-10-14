@@ -1,12 +1,14 @@
 body {
-  padding:20px;
-  padding-bottom: 0px;
+  padding: 0 20px 0;
   height:100%;
-  background: -webkit-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  background-image: url("winter-tree1.jpg");
+  background-repeat: no-repeat;
+  background-size:140%;
+   /*background: -webkit-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: -o-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: -moz-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
-  min-height: 670px;
+  min-height: 670px;*/
 }
 table {
   width:80%;
@@ -16,12 +18,12 @@ table, tr, td, th {
   border-collapse:collapse;
 }
 
-tr:nth-child(odd) {
-  background: #D1F0FF;
+tr:nth-child(odd), tr:nth-child(odd) a {
+  color:white;
 }
 
-tr:nth-child(even) {
-  background: #FAFAEE;
+tr:nth-child(even), tr:nth-child(even) a {
+  color:#1af288;
 }
 
 td {
@@ -38,7 +40,27 @@ td, th {
   text-align: center;
   font-size: 16px;
 }
+.header {
+  height:50px;
+  margin-bottom:10px;
+}
+.header a {
+  font-size:17px;
+  font-family:Comic Sans MS, cursive, sans-serif;
+  font-weight:bold;
+  background-color:none;
+  color:white;
+}
+.header a:hover {
+  background:none !important;
+  font-size:21px;
+}
 
+.flash_msg {
+  clear: both;
+  height:50px;
+  margin-bottom:15px;
+}
 .container {
   padding: 20px;
 }
@@ -56,16 +78,16 @@ td, th {
 }
 
 .post_title {
-  color:#0066CC;
+  color:white;
   border-bottom: 1px solid grey
 }
 .post_content{
-  color:#00CCCC;
+  color:#1af288;
   border-bottom: 1px solid grey
 }
 .post_vote {
   font-size:23px;
-  color:#00CCFF;
+  color:yellow;
   border-bottom: 1px solid grey
 }
 
@@ -95,18 +117,18 @@ td, th {
   width:50%;
   float:left;
   padding-right: 15px;
-  color:#FF9999;
+  color:#00FFFF;
   overflow: auto;
   max-height:380px;
 }
 
 .post-comment-container .left-container ul li {
-  color:#DB704D;
+  color:yellow;
   font-size:18px;
 }
 
 .post-comment-container .left-container ul li:nth-child(odd) {
-  color:#33ADFF;
+  color:white;
 }
 
 .comment_box {
@@ -129,13 +151,14 @@ td, th {
 
 .comment_delete {
   padding-left: 15px;
+  color:red;
 }
 
 .home_page {
   position: absolute;
   left:29%;
   top:45%;
-  color:#33ADFF
+  color:white;
 }
 
 .user_forms {
@@ -146,7 +169,7 @@ td, th {
 .form_header {
   text-align: center;
   font-size:24px;
-  background:#7FB1B3;
+  border-bottom:1px solid #665b48;
   padding: 10px;
   font-family: Comic Sans MS, cursive, sans-serif;
   color:white;
@@ -155,9 +178,9 @@ td, th {
   padding:25px;
 }
 
-.user_forms legend {
+.user_forms legend, .error {
   font-family: Comic Sans MS, cursive, sans-serif;
-  color:#665B48;
+  color:#E6FFCC;
 }
 
  .form-group {
@@ -165,10 +188,11 @@ td, th {
 }
 
 .error {
-  color:red;
+  color:yellow;
 }
 .error:before{
   content:"*";
-  font-size:16px;
+  font-size:17px;
   padding:2px;
+  color:#CC7A00;
 }
