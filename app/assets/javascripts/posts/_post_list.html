@@ -10,14 +10,18 @@
     <tr>
       <th>Title</th>
       <th>Votes</th>
+      <th>Author</th>
       <th>Delete Post</th>
     <tr>
     <tr ng-repeat="post in posts_list | orderBy:order">
       <td ng-show></td>
       <td><a href="#/posts/{{post.id}}">{{post.title}}</a></td>
       <td class="text_center">{{post.likes}}</td>
-      <td class="text_center">
-        <span ng-click = "deletePost(post)"class=" glyphicon glyphicon-trash"></span>
+      <td class="text_center">{{post.user.name}}</td>
+      <td class="text_center" >
+        <div ng-if="current_user.name == post.user.name">
+          <span title="Delete Post" ng-click = "deletePost(post)"class=" glyphicon glyphicon-trash"></span>
+        </div>
       </td>
     </tr>
   </table>

@@ -1,14 +1,19 @@
 var post = angular.module("posts", [])
 
-post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $location, Flash) {
+post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $location, Flash, Auth) {
 
   Flash.dismiss();
+
+  // Initilize current user
+  Auth.currentUser().then(function (user){
+    $scope.current_user = user
+  });
 
   $scope.post = {}
 
   // Get All Posts
   $http.get('/posts.json').success(function(data) {
-      $scope.posts_list = data
+    $scope.posts_list = data
   })
 
   //  Add a new Post

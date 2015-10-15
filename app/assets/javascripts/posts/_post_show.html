@@ -10,7 +10,7 @@
   <div class="post_vote clearfix">
     <div class="post_label">Like To vote</div>
     <div class="post_data">
-      <span ng-click= "updatePostLikes(post)" class="glyphicon glyphicon-thumbs-up"></span>
+      <span title="Cast Your Vote" ng-click= "updatePostLikes(post)" class="glyphicon glyphicon-thumbs-up"></span>
       <span class="post_likes">{{post.likes}}</span>
     </div>
   </div>
@@ -36,10 +36,10 @@
           {{comment.content}}
         </div>
         <div class="comment_like">
-          <span  ng-click="updateCommentLike(post,comment)" class="glyphicon glyphicon-thumbs-up"></span>
+          <span title="Cast Your Vote" ng-click="updateCommentLike(post,comment)" class="glyphicon glyphicon-thumbs-up"></span>
           <span class="comment_likes">{{comment.likes}}</span>
 
-          <span ng-click = "deleteComment(post, comment)"class=" glyphicon glyphicon-trash comment_delete"></span>
+          <span title="Delete Comment" ng-click = "deleteComment(post, comment)"class=" glyphicon glyphicon-trash comment_delete"></span>
         </div>
       </li>
   </div>

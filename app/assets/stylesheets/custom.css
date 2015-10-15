@@ -51,7 +51,7 @@ td, th {
   background-color:none;
   color:white;
 }
-.header a:hover, a:active, a:focus {
+.header a:hover, .header a:active, .header a:focus {
   background:none !important;
   font-size:21px;
 }
@@ -74,7 +74,7 @@ td, th {
 }
 
 .post_container > div{
-  padding:15px;
+  padding:10px;
 }
 
 .post_title {
