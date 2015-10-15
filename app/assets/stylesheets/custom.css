@@ -51,7 +51,7 @@ td, th {
   background-color:none;
   color:white;
 }
-.header a:hover {
+.header a:hover, a:active, a:focus {
   background:none !important;
   font-size:21px;
 }
@@ -86,20 +86,24 @@ td, th {
   border-bottom: 1px solid grey
 }
 .post_vote {
-  font-size:23px;
+  font-size:22px;
   color:yellow;
   border-bottom: 1px solid grey
 }
 
 .post_label {
   width:30%;
-  font-size:25px;
-  float:left;
+  font-size:22px;
+  display:inline-block;
+  vertical-align:top;
 }
 
 .post_data {
-  font-size: 25px;
+  font-size: 22px;
   cursor: pointer;
+  width:68%;
+  display:inline-block;
+
 }
 
 .glyphicon-thumbs-up, .glyphicon-trash {

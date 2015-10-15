@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    respond_with Post.all
+    respond_with Post.all.to_json(include: :user)
   end
 
   def create
-    respond_with Post.create(post_params)
+    respond_with Post.create(post_params.merge(user_id: current_user.id))
   end
 
   def show

@@ -18,6 +18,9 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
         $scope.posts_list.push(data);
         $scope.post.title = ''
         $scope.post.content = ''
+        $http.get('/posts.json').success(function(data) {
+          $scope.posts_list = data
+        })
         Flash.create("success", "Post Successfully Created")
       })
     }
