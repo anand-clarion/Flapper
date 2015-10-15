@@ -8,7 +8,7 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
 
   // Initilize current user
   Auth.currentUser().then(function (user){
-    $scope.user = user;
+    $scope.current_user = user
   });
 
   // User log In
@@ -44,16 +44,16 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
     })
   }
 
-  $scope.$on('devise:new-registration', function (e, user){
-    $scope.user = user;
+  $scope.$on('devise:new-registration', function (e, current_user){
+    $scope.current_user = current_user;
   });
 
-  $scope.$on('devise:login', function (e, user){
-    $scope.user = user;
+  $scope.$on('devise:login', function (e, current_user){
+    $scope.current_user = current_user;
   });
 
-  $scope.$on('devise:logout', function (e, user){
-    $scope.user = {};
+  $scope.$on('devise:logout', function (e, current_user){
+    $scope.current_user = {};
   });
 
 })

@@ -1,14 +1,12 @@
 body {
-  padding: 0 20px 0;
+  padding:20px;
+  padding-bottom: 0px;
   height:100%;
-  background-image: url("winter-tree1.jpg");
-  background-repeat: no-repeat;
-  background-size:140%;
-   /*background: -webkit-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
+  background: -webkit-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: -o-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: -moz-linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
   background: linear-gradient(#FBFBEF 40%, #CEF6CE, #A9F5E1);
-  min-height: 670px;*/
+  min-height: 670px;
 }
 table {
   width:80%;
@@ -18,12 +16,12 @@ table, tr, td, th {
   border-collapse:collapse;
 }
 
-tr:nth-child(odd), tr:nth-child(odd) a {
-  color:white;
+tr:nth-child(odd) {
+  background: #D1F0FF;
 }
 
-tr:nth-child(even), tr:nth-child(even) a {
-  color:#1af288;
+tr:nth-child(even) {
+  background: #FAFAEE;
 }
 
 td {
@@ -40,31 +38,7 @@ td, th {
   text-align: center;
   font-size: 16px;
 }
-.header {
-  height:50px;
-  margin-bottom:10px;
-}
-.header a {
-  font-size:17px;
-  font-family:Comic Sans MS, cursive, sans-serif;
-  font-weight:bold;
-  background-color:none;
-  color:white;
-}
-.header a:hover, .header a:active, .header a:focus {
-  background:none !important;
-  font-size:21px;
-}
 
-a, a:active {
-  outline: none;
-  color:yellow;
-}
-.flash_msg {
-  clear: both;
-  height:50px;
-  margin-bottom:15px;
-}
 .container {
   padding: 20px;
 }
@@ -78,36 +52,32 @@ a, a:active {
 }
 
 .post_container > div{
-  padding:10px;
+  padding:15px;
 }
 
 .post_title {
-  color:white;
+  color:#0066CC;
   border-bottom: 1px solid grey
 }
 .post_content{
-  color:#1af288;
+  color:#00CCCC;
   border-bottom: 1px solid grey
 }
 .post_vote {
-  font-size:22px;
-  color:yellow;
+  font-size:23px;
+  color:#00CCFF;
   border-bottom: 1px solid grey
 }
 
 .post_label {
   width:30%;
-  font-size:22px;
-  display:inline-block;
-  vertical-align:top;
+  font-size:25px;
+  float:left;
 }
 
 .post_data {
-  font-size: 22px;
+  font-size: 25px;
   cursor: pointer;
-  width:68%;
-  display:inline-block;
-
 }
 
 .glyphicon-thumbs-up, .glyphicon-trash {
@@ -125,18 +95,18 @@ a, a:active {
   width:50%;
   float:left;
   padding-right: 15px;
-  color:#00FFFF;
+  color:#FF9999;
   overflow: auto;
   max-height:380px;
 }
 
 .post-comment-container .left-container ul li {
-  color:yellow;
+  color:#DB704D;
   font-size:18px;
 }
 
 .post-comment-container .left-container ul li:nth-child(odd) {
-  color:white;
+  color:#33ADFF;
 }
 
 .comment_box {
@@ -159,14 +129,13 @@ a, a:active {
 
 .comment_delete {
   padding-left: 15px;
-  color:red;
 }
 
 .home_page {
   position: absolute;
   left:29%;
   top:45%;
-  color:white;
+  color:#33ADFF
 }
 
 .user_forms {
@@ -177,7 +146,7 @@ a, a:active {
 .form_header {
   text-align: center;
   font-size:24px;
-  border-bottom:1px solid #665b48;
+  background:#7FB1B3;
   padding: 10px;
   font-family: Comic Sans MS, cursive, sans-serif;
   color:white;
@@ -186,9 +155,9 @@ a, a:active {
   padding:25px;
 }
 
-.user_forms legend, .error {
+.user_forms legend {
   font-family: Comic Sans MS, cursive, sans-serif;
-  color:#E6FFCC;
+  color:#665B48;
 }
 
  .form-group {
@@ -196,15 +165,10 @@ a, a:active {
 }
 
 .error {
-  color:yellow;
+  color:red;
 }
 .error:before{
   content:"*";
-  font-size:17px;
+  font-size:16px;
   padding:2px;
-  color:#CC7A00;
-}
-
-.big_input_box {
-  min-height: 80px;
 }

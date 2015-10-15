@@ -17,11 +17,18 @@
 <div class="post-comment-container">
   <div class="left-container">
     <h3>Comments</h3>
-    <form ng-submit="addComment(post)">
+    <form ng-submit="comment_form.$valid && addComment(post)" name="comment_form" novalidate>
       <fieldset>
         <legend>Add A Comment</legend>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Comment" ng-model="comment.content"></input>
+        <div class="form-group big_input_box">
+          <textarea rows="2" class="form-control" placeholder="Your Valuable Comment..." ng-model="comment.content" name="content" required></textarea>
+
+          <span ng-show="comment_form.$submitted || comment_form.content.$touched && comment_form.content.$invalid ">
+            <div ng-messages="comment_form.content.$error">
+              <span class="error" ng-message="required">We need Your valuable Words</span>
+            </div>
+          </span>
+
         </div>
         <button type="submit" class="btn btn-primary">Comment</button>
       </fieldset>
