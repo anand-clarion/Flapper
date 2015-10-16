@@ -67,6 +67,8 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
       $scope.comment_list.push(data);
       $scope.comment.content = ''
       Flash.create("success", "Comment Successfully Added")
+      $scope.comment_form.$setPristine();
+      $scope.comment_form.$setUntouched();
     })
   }
 
