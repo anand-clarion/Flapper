@@ -21,14 +21,14 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
     if($scope.post.title) {
       $http.post("/posts.json", {post: $scope.post}).success(function(data){
 
-        // Add newly added post in post list
-        $scope.posts_list.push(data);
-
+        $http.get('/posts.json').success(function(data) {
+          $scope.posts_list = data
+        })
         Flash.create("success", "Post Successfully Created")
-
-        //clear out the form field
         $scope.post.title = ''
         $scope.post.content = ''
+        $scope.post_form.$setPristine();
+        $scope.post_form.$setUntouched();
       })
     }
   }
