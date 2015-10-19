@@ -5,6 +5,7 @@ var app = angular.module("myApp", ['ngRoute', 'ngCookies',  'templates', 'home',
 // To Handle the unauthorized 401 Error.
 app.factory('authHttpResponseInterceptor',function($q,$location, Flash){
   return {
+
     response: function(response){
       if (response.status === 401) {
           console.log("Response 401");
@@ -12,15 +13,23 @@ app.factory('authHttpResponseInterceptor',function($q,$location, Flash){
       return response || $q.when(response);
     },
     responseError: function(rejection) {
+      // generate rails generated errors mesages.
+      var msg = ''
+      angular.forEach(rejection.data.errors, function(value, key) {
+        msg += key + " - " + value + '<br>'
+      });
+      if(msg) {
+        Flash.create("danger", msg);
+      }
+
       if (rejection.status === 401) {
-          console.log("Response Error 401 we handeled it successfully",rejection);
-          if($location.path() == "/register" || $location.path() == "/login" ) {
-            console.clear();
-          }
-          else {
-            $location.path('/login')
-            Flash.create('warning', "You need to sign up or login to access this action");
-          }
+        if($location.path() == "/register" || $location.path() == "/login" ) {
+
+        }
+        else {
+          $location.path('/login')
+          Flash.create('danger', rejection.data.error);
+        }
       }
       return $q.reject(rejection);
     }

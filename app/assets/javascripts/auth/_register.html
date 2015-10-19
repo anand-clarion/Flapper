@@ -8,7 +8,7 @@
         <legend>Be A Part Of Our Family</legend>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name" ng-model="user.name" required ng-minlength="3" ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }"></input>
+            <input type="text" class="form-control" placeholder="Name" ng-model="user.name"  ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }" required ></input>
 
             <span ng-show="regForm.$submitted || regForm.uName.$touched && regForm.uName.$error">
               <div ng-messages="regForm.uName.$error">

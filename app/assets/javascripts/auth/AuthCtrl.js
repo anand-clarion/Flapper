@@ -30,8 +30,6 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
       $location.path('/posts')
       message = "Welcome <b>" + user.name + "</b>"
       Flash.create('success', message);
-    }, function(error) {
-      Flash.create('danger', error.data.error);
     })
   }
 
@@ -41,6 +39,7 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
       $location.path('/home')
       message = "Hey <b>" + previous_user.name + " </b> You Have Been Logged Out"
       Flash.create('success', message);
+
     })
   }
 
