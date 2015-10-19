@@ -22,6 +22,8 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
         $scope.posts_list = data
         $scope.post.title = ''
         $scope.post.content = ''
+        $scope.post_form.$setPristine();
+        $scope.post_form.$setUntouched();
         Flash.create("success", "Post Successfully Created")
       })
     }
@@ -48,7 +50,6 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
 
   // Update the likes of post
   $scope.updateLikes = function(likable) {
-    console.log(likable, $scope.likable_type)
     $http.post('/likes.json', {like: {likable_type: $scope.likable_type, likable_id: likable.id}}).success(function(like) {
       likable.likes.length += 1;
       Flash.create("success", "Your Vote Successfully Added")
@@ -58,26 +59,18 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
   // Add comment on post
   $scope.addComment = function(post) {
     $http.post('/posts/'+post.id+'/comments.json', { comment: $scope.comment }).success(function(data) {
-      $scope.comment_list.push(data);
+      $scope.post.comments.push(data)
       $scope.comment.content = ''
       Flash.create("success", "Comment Successfully Added")
-    }).error(function(error, data) {
-      alert(error)
-    })
-  }
-
-  // Update the likes of comments
-  $scope.updateCommentLike = function(post, comment) {
-    $http.get('/posts/'+post.id+'/comments/'+comment.id+'/addvote.json').success(function(data){
-      comment.likes += 1
-      Flash.create("success", "Your Vote Successfully Added")
+      $scope.comment_form.$setPristine();
+      $scope.comment_form.$setUntouched();
     })
   }
 
   $scope.deleteComment = function(post, comment) {
-    var index = $scope.comment_list.indexOf(comment);
+    var index = $scope.post.comments.indexOf(comment);
     $http.delete('/posts/'+post.id+'/comments/'+comment.id+'.json').success(function(data){
-      $scope.comment_list.splice(index, 1);
+      $scope.post.comments.splice(index, 1);
       $location.path('/posts/'+post.id);
       Flash.create("success", "Comment Successfully Deleted")
     })

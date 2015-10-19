@@ -18,7 +18,6 @@ class PostsController < ApplicationController
   def show
     final = []
     post = Post.find(params[:id]).to_json(include: [{comments: {include: :likes}}, :likes])
-
     respond_with post
   end
 

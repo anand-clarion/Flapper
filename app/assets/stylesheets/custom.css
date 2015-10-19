@@ -56,6 +56,10 @@ td, th {
   font-size:21px;
 }
 
+a, a:active {
+  outline: none;
+  color:yellow;
+}
 .flash_msg {
   clear: both;
   height:50px;
@@ -210,5 +214,9 @@ td, th {
   position: absolute;
   right:17px;
   top:5px;
-  opacity: 0.8
+  opacity: 0.8;
+}
+
+.big_input_box {
+  min-height: 75px;
 }
