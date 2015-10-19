@@ -10,7 +10,6 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
   });
 
   $scope.post = {}
-
   // Get All Posts
   $http.get('/posts.json').success(function(data) {
     $scope.posts_list = data
@@ -20,12 +19,9 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
   $scope.addPost = function() {
     if($scope.post.title) {
       $http.post("/posts.json", {post: $scope.post}).success(function(data){
-        $scope.posts_list.push(data);
+        $scope.posts_list = data
         $scope.post.title = ''
         $scope.post.content = ''
-        $http.get('/posts.json').success(function(data) {
-          $scope.posts_list = data
-        })
         Flash.create("success", "Post Successfully Created")
       })
     }
@@ -46,15 +42,15 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
   $scope.comment = {}
   $scope.comment_list = {}
 
-  $http.get('/posts/' + $routeParams.id + '.json').success(function(post) {
-    $scope.post = post[0]
-    $scope.comment_list = post[1];
+  $http.get('/posts/' + $routeParams.id + '.json').success(function(data) {
+    $scope.post = data
   })
 
   // Update the likes of post
-  $scope.updatePostLikes = function(post) {
-    $http.get("/posts/" + post.id + '/addvote.json').success(function(data) {
-      post.likes +=1;
+  $scope.updateLikes = function(likable) {
+    console.log(likable, $scope.likable_type)
+    $http.post('/likes.json', {like: {likable_type: $scope.likable_type, likable_id: likable.id}}).success(function(like) {
+      likable.likes.length += 1;
       Flash.create("success", "Your Vote Successfully Added")
     })
   }
@@ -65,6 +61,8 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
       $scope.comment_list.push(data);
       $scope.comment.content = ''
       Flash.create("success", "Comment Successfully Added")
+    }).error(function(error, data) {
+      alert(error)
     })
   }
 

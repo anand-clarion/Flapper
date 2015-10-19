@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :likes, only: [:create, :new]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

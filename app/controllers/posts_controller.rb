@@ -11,16 +11,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    respond_with Post.create(post_params.merge(user_id: current_user.id))
+    Post.create(post_params.merge(user_id: current_user.id))
+    respond_with Post.all.to_json(include: :user), :location => nil
   end
 
   def show
     final = []
-    post = Post.find(params[:id])
-    comment = Post.find(params[:id]).comments
-    final.push(post)
-    final.push(comment)
-    respond_with final
+    post = Post.find(params[:id]).to_json(include: [{comments: {include: :likes}}, :likes])
+
+    respond_with post
   end
 
   def edit
