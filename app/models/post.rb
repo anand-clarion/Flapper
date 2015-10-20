@@ -1,10 +1,6 @@
 class Post < ActiveRecord::Base
-  has_many :comments, dependent: :destroy
+  #Associations
   belongs_to :user
+  has_many :comments, dependent: :destroy
   has_many :likes, as: :likable
-
-  # def as_json(options = {})
-  #   super(options.merge(include: :comments))
-  # end
-
 end

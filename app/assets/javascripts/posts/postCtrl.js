@@ -5,17 +5,18 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
   Flash.dismiss();
 
   // Initilize current user
-  Auth.currentUser().then(function (user){
-    $scope.current_user = user
-  });
+    Auth.currentUser().then(function(user) {
+      $scope.current_user = user
+    })
 
   $scope.post = {}
+
   // Get All Posts
   $http.get('/posts.json').success(function(data) {
     $scope.posts_list = data
   })
 
-  //  Add a new Post
+  // Add a new Post
   $scope.addPost = function() {
     if($scope.post.title) {
       $http.post("/posts.json", {post: $scope.post}).success(function(data){
@@ -35,7 +36,7 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
     $http.delete('/posts/'+post.id+'.json').success(function(data) {
       $scope.posts_list.splice(index, 1);
       $location.path('/posts')
-      Flash.create("info", "Post Successfully Deleted")
+      Flash.create("success", "Post Successfully Deleted")
     })
   }
 });
@@ -48,7 +49,7 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
     $scope.post = data
   })
 
-  // Update the likes of post
+  // Update the likes of post and comment.
   $scope.updateLikes = function(likable) {
     $http.post('/likes.json', {like: {likable_type: $scope.likable_type, likable_id: likable.id}}).success(function(like) {
       likable.likes.length += 1;
@@ -59,7 +60,7 @@ post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $locatio
   // Add comment on post
   $scope.addComment = function(post) {
     $http.post('/posts/'+post.id+'/comments.json', { comment: $scope.comment }).success(function(data) {
-      $scope.post.comments.push(data)
+      $scope.post = data
       $scope.comment.content = ''
       Flash.create("success", "Comment Successfully Added")
       $scope.comment_form.$setPristine();

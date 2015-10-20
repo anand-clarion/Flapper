@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   respond_to :json
   before_action :authenticate_user!
+  before_action :set_post, only: [:show, :edit, :destroy]
 
   def new
     @post = Post.new
@@ -16,28 +17,23 @@ class PostsController < ApplicationController
   end
 
   def show
-    final = []
-    post = Post.find(params[:id]).to_json(include: [{comments: {include: :likes}}, :likes])
-    respond_with post
+    respond_with @post.to_json(include: [{comments: {include: :likes}}, :likes])
   end
 
   def edit
-    respond_with Post.find(params[:id])
-  end
-
-  def addvote
-    post = Post.find(params[:id])
-    post.likes += 1
-    respond_with post.save!
+    respond_with @post
   end
 
   def destroy
-    post = Post.find(params[:id])
-    respond_with post.destroy
+    respond_with @post.destroy
   end
 
   private
     def post_params
       params.require(:post).permit(:title, :content, :likes)
+    end
+
+    def set_post
+      @post = Post.find(params[:id])
     end
 end
