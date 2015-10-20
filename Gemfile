@@ -22,7 +22,7 @@ gem 'sprockets', '2.12.3'
 gem 'angular-rails-templates'
 
 # to Permit CSRF token
-gem 'angular_rails_csrf'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'responders', '~> 2.0'
