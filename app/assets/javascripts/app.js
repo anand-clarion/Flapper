@@ -38,12 +38,6 @@ app.factory('authHttpResponseInterceptor',function($q,$location, Flash){
 
 // Re initialized session on page refresh
 app.run(function($cookieStore, $rootScope, Auth, $location) {
-  //Redirect user to posts page if user already logged in
-  $rootScope.$on('$routeChangeStart', function(){
-    Auth.currentUser().then(function(user) {
-      $location.path('/posts')
-    })
-  })
 
   Auth.currentUser().then(function(user) {
       $rootScope.isSignedIn = true
@@ -63,11 +57,21 @@ app.config(function($routeProvider, $httpProvider){
     })
     .when('/login', {
       templateUrl: "auth/_login.html",
-      controller: "AuthCtrl"
+      controller: "AuthCtrl",
+      resolve: {
+        "redirectLoggedInUser": function(checkUser) {
+          return checkUser.isLoggedIn()
+        }
+      }
     })
     .when('/register', {
       templateUrl: "auth/_register.html",
-      controller: "AuthCtrl"
+      controller: "AuthCtrl",
+      resolve: {
+        "redirectLoggedInUser": function(checkUser) {
+          return checkUser.isLoggedIn()
+        }
+      }
     })
     .when('/posts', {
       templateUrl: "posts/_post_list.html",
@@ -84,4 +88,15 @@ app.config(function($routeProvider, $httpProvider){
     .otherwise({
       redirectTo:"/home"
     })
+})
+
+// Redirect Logged in user to index page
+app.factory("checkUser", function(Auth, $location){
+  return {
+    isLoggedIn: function() {
+      Auth.currentUser().then(function(){
+        $location.path('/posts')
+      })
+    }
+  }
 })
