@@ -1,6 +1,6 @@
 <div class="collapse navbar-collapse pull-left" ng-controller="AuthCtrl">
   <ul class="nav navbar-nav">
-    <li ng-show="isSignedIn"><a href="#/users/{{current_user.id}}">Welcome {{ current_user.name }}</a></li>
+    <li ng-show="isSignedIn" class="user_name"><a href="#/users/{{current_user.id}}">Hi {{ current_user.name }}</a></li>
   </ul>
 </div>
 
@@ -8,7 +8,7 @@
   <ul class="nav navbar-nav">
     <li><a href="#/home">Home</a></li>
     <li ng-hide="isSignedIn"><a href="#/login">Log In</a></li>
-    <li ng-hide="isSignedIn"><a href="#/register">Register</a></li>
+    <li ng-hide="isSignedIn"><a href="#/register">Signup</a></li>
     <li ng-show="isSignedIn"><a href="#/posts">Posts</a></li>
     <li ng-show="isSignedIn"><a ng-click="logout()">Log Out</a></li>
   </ul>

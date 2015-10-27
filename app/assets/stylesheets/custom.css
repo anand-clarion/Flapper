@@ -45,20 +45,35 @@ td, th {
   margin-bottom:10px;
 }
 .header a {
-  font-size:17px;
+  font-size:15px;
   font-family:Comic Sans MS, cursive, sans-serif;
   font-weight:bold;
   background-color:none;
-  color:white;
+  color:#1B82E6;
+  text-align: center;
+  padding-top: 17px !important;
+}
+
+.header li {
+  background-image: url("/images/blue-cloud-hi.png");
+  background-repeat: no-repeat;
+  background-size: 100% 49px;
+  margin-right: 5px;
+  width: 115px;
+}
+
+.header li.user_name {
+   background-size: 100% 53px;
+   width:auto;
+   padding: 4px;
 }
 .header a:hover, .header a:active, .header a:focus {
   background:none !important;
-  font-size:21px;
+  font-size:17px;
 }
 
 a, a:active, a:focus, a:hover {
   outline: none;
-  color:yellow;
 }
 .flash_msg {
   clear: both;
