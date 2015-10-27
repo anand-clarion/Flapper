@@ -20,6 +20,7 @@
     "angular-messages": "~1.4.7",
     "angular-route": "~1.4.7",
     "AngularDevise": "angular-devise#~1.1.0",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "ng-file-upload-shim": "~9.0.19"
   }
 }

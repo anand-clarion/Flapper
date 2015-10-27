@@ -5,4 +5,6 @@
 //= require angular-cookies
 //= require angular-messages
 //= require angular-flash-alert/dist/angular-flash
+//= require ng-file-upload/ng-file-upload
+//= require ng-file-upload/ng-file-upload-shim
 //= require_tree .

@@ -1,6 +1,6 @@
 var auth = angular.module("auth", [])
 
-auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore, Flash) {
+auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore, Flash, Upload) {
 
   Flash.dismiss();
 
@@ -25,14 +25,20 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
 
   // New user Registration.
   $scope.register = function() {
-    Auth.register($scope.user).then(function(user) {
+    Upload.upload({
+      url: '/users.json',
+      method: 'POST',
+      data: { user: $scope.user},
+      file: $scope.user.avatar,
+    }).then(function (resp) {
       $rootScope.isSignedIn = true
       $location.path('/posts')
-      message = "Welcome <b>" + user.name + "</b>"
+      message = "Welcome <b>" + resp.data.name + "</b>"
       Flash.create('success', message);
     })
   }
 
+  // Logout user
   $scope.logout = function() {
     Auth.logout().then(function(previous_user) {
       $rootScope.isSignedIn = false

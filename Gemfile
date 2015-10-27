@@ -27,10 +27,11 @@ gem 'angular-rails-templates'
 # gem 'unicorn'
 gem 'responders', '~> 2.0'
 
-
 gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

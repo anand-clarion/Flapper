@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  USER_DEFAULT_IMAGE = 'images/user_miss.jpeg'
   #Associations
   has_many :posts, dependent: :destroy
   has_many :likes, as: :likable
@@ -13,4 +14,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # return user image url for json response
+  def avatar_url
+    if self.avatar.present?
+      avatar.url(:original)
+    else
+      USER_DEFAULT_IMAGE
+    end
+  end
 end

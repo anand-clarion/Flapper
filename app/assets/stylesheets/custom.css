@@ -220,3 +220,59 @@ a, a:active, a:focus, a:hover {
 .big_input_box {
   min-height: 75px;
 }
+
+.user_info_container {
+  font-family: Comic Sans MS, cursive, sans-serif;
+}
+
+
+.user_pic_input {
+  float:left;
+  width:200px;
+  margin-right: 10px;
+}
+.userthumb {
+  height:100px;
+  width:100px;
+  border-radius: 5px;
+}
+.user_image_container {
+  border:1px dotted yellow;
+  height:200px;
+  position: relative;
+}
+
+.user_profile_image {
+  position: absolute;
+  top:71%;
+  text-align: center;
+  left: 50%;
+  margin-left: -65px;
+}
+
+.user_profile_image img {
+  height:130px;
+  width:130px;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+.user_bg_image {
+  height: 100%;
+  overflow: hidden;
+}
+.user_bg_image img {
+  width: 100%;
+}
+.user_name_on_image {
+  position: absolute;
+  top: 20%;
+  left:50%;
+  margin-left: -70px;
+}
+.user_name_on_image p {
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}

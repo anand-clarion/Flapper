@@ -1,5 +1,7 @@
 var app = angular.module("myApp", ['ngRoute', 'ngCookies',  'templates', 'home',
-                         'posts', 'Devise', 'auth', 'ngMessages', "flash"]);
+                         'posts', 'Devise', 'auth', 'ngMessages', "flash",
+                         'users', 'ngFileUpload'
+                         ]);
 
 
 // To Handle the unauthorized 401 Error.
@@ -85,6 +87,10 @@ app.config(function($routeProvider, $httpProvider){
       templateUrl: "posts/_post_show.html",
       controller: "PostEditCtrl"
     })
+    .when("/users/:id", {
+      templateUrl: "users/_user_show.html",
+      controller: "UserDetailCtrl"
+    })
     .otherwise({
       redirectTo:"/home"
     })
@@ -100,3 +106,4 @@ app.factory("checkUser", function(Auth, $location){
     }
   }
 })
+
