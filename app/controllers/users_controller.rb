@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    respond_with @user.to_json(:methods => :avatar_url)
+    respond_with @user.to_json(:methods => [:avatar_url])
   end
 
   private

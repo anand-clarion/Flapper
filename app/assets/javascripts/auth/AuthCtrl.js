@@ -29,7 +29,6 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
       url: '/users.json',
       method: 'POST',
       data: { user: $scope.user},
-      file: $scope.user.avatar,
     }).then(function (resp) {
       $rootScope.isSignedIn = true
       $location.path('/posts')

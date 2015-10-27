@@ -1,13 +1,16 @@
 <div class="user_info_container">
   <div class="user_image_container">
     <div class="user_bg_image">
-      <img src="images/lighted-forest.jpg">
+      <img src="{{user.avatar_url.background}}">
     </div>
     <div class="user_name_on_image">
       <p>{{user.name}}<p>
     </div>
+    <div class="user_email">
+      <p>E-mail - {{user.email}}</p>
+    </div>
     <div class="user_profile_image">
-       <img src="{{user.avatar_url}}" alt="Smiley face" />
+       <img src="{{user.avatar_url.profile}}" alt="Smiley face" />
     </div>
   </div>
 </div>

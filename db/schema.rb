@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020103222) do
+ActiveRecord::Schema.define(version: 20151027081659) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20151020103222) do
     t.string   "avatar_content_type",    limit: 255
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "bg_avatar_file_name",    limit: 255
+    t.string   "bg_avatar_content_type", limit: 255
+    t.integer  "bg_avatar_file_size",    limit: 4
+    t.datetime "bg_avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
