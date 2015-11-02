@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   #Associations
   has_many :posts, dependent: :destroy
   has_many :likes, as: :likable
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "images/winter-tree1.jpg"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "images/user_miss.jpeg"
   has_attached_file :bg_avatar, styles: { medium: "500x500>", thumb: "300x300>" }, default_url: "images/lighted-forest.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 

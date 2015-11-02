@@ -8,7 +8,8 @@
         <legend>Be A Part Of Our Family</legend>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name" ng-model="user.name" ng-minlength:3 ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }" required ></input>
+             <label id="icon" for="name"><span class="glyphicon glyphicon-user"></span></label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="user.name" ng-minlength="3" ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }" required ></input>
 
             <span ng-show="regForm.$submitted || regForm.uName.$touched && regForm.uName.$error">
               <div ng-messages="regForm.uName.$error">
@@ -20,6 +21,7 @@
           </div>
 
           <div class="form-group">
+            <label id="icon" for="name"><span class="glyphicon glyphicon-envelope"></span></label>
             <input type="email" class="form-control" placeholder="Email Id" ng-model="user.email" name="uEmail" required></input>
 
             <span ng-show="regForm.$submitted || regForm.uEmail.$touched && regForm.uEmail.$error">
@@ -31,6 +33,20 @@
           </div>
 
           <div class="form-group">
+            <label id="icon" for="city"><span class="glyphicon glyphicon-home"></span></label>
+            <input type="text" class="form-control" placeholder="City" ng-model="user.city" ng-minlength="3" ng-maxlength="25" name="uCity" ng-model-options="{ updateOn: ' default blur' }" required ></input>
+
+            <span ng-show="regForm.$submitted || regForm.uCity.$touched && regForm.uCity.$error">
+              <div ng-messages="regForm.uCity.$error">
+                <span class="error" ng-message="required">Please Enter Your city</span>
+                <span class="error" ng-message="minlength">Please use Atleast 3 character</span>
+                <span class="error" ng-message="maxlength">City Name is too long</span>
+              </div>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
             <input type="password" class="form-control" placeholder="Password" ng-model="user.password" name="uPassword" required></input>
 
             <span ng-show="regForm.$submitted || regForm.uPassword.$touched && regForm.uPassword.$invalid">
@@ -41,6 +57,7 @@
           </div>
 
           <div class="form-group">
+            <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
             <input type="password" class="form-control" placeholder=" Confirm Password" ng-model="user.confirm_password" name="uCnfrmPassword" required password-verify></input>
 
             <span ng-show="regForm.$submitted || regForm.uCnfrmPassword.$touched && regForm.uCnfrmPassword.$invalid">
@@ -51,26 +68,33 @@
             </span>
           </div>
           <div class="form-group">
-            <input type="file" ngf-select ng-model="user.avatar" name="userPic" accept="image/*" ngf-max-size="2MB" class="user_pic_input">
-            <img ng-show="regForm.userPic.$valid" ngf-thumbnail="user.avatar" class="userthumb">
-            <span ng-show="regForm.$submitted || regForm.userPic.$touched&& regForm.userPic.$invalid">
-              <div ng-messages="regForm.userPic.$error">
-                <span class="error" ng-message="required">Profile Picture is Required</span>
-                <span class="error" ng-message="maxSize">userPic too large
-            {{user.avatar.size / 1000000|number:1}}MB: max 2M</span>
-              </div>
-            </span>
-            <div class="clearfix"></div>
-            <div class="form-group">
-              <input type="file" ngf-select ng-model="user.bg_avatar" name="userBgPic" accept="image/*" ngf-max-size="2MB" class="user_pic_input">
+            <div class="user_pic_input">
+              <label id="icon" for="name"><span class="glyphicon glyphicon-picture"></span></label>
+              <span class="btn btn-default btn-file">
+                Profile<input type="file" ngf-select ng-model="user.avatar" name="userPic" accept="image/*" ngf-max-size="10MB" class="user_pic_input">
+              </span>
+              <img ng-show="regForm.userPic.$valid" ngf-thumbnail="user.avatar" class="userthumb">
+              <span ng-show="regForm.$submitted || regForm.userPic.$touched&& regForm.userPic.$invalid">
+                <div ng-messages="regForm.userPic.$error">
+                  <span class="error" ng-message="required">Profile Picture is Required</span>
+                  <span class="error" ng-message="maxSize">userPic too large
+              {{user.avatar.size / 1000000|number:1}}MB: max 2M</span>
+                </div>
+              </span>
+            </div>
+            <div class="user_pic_input">
+              <label id="icon" for="name"><span class="glyphicon glyphicon-picture"></span></label>
+              <span class="btn btn-default btn-file">Background
+                <input type="file" ngf-select ng-model="user.bg_avatar" name="userBgPic" accept="image/*" ngf-max-size="10MB">
+              </span>
               <img ng-show="regForm.userBgPic.$valid" ngf-thumbnail="user.bg_avatar" class="userthumb">
               <span ng-show="regForm.$submitted || regForm.userBgPic.$touched && regForm.userBgPic.$invalid">
                 <div ng-messages="regForm.userBgPic.$error">
                   <span class="error" ng-message="required">Background Picture is Required</span>
-                  <span class="error" ng-message="maxSize">userBgPic too large
-              {{user.bg_avatar.size / 1000000|number:1}}MB: max 2M</span>
+                  <span class="error" ng-message="maxSize">userBgPic too large {{user.bg_avatar.size / 1000000|number:1}}MB: max 2M</span>
                 </div>
-            </span>
+              </span>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Register</button>
       </fieldset>
