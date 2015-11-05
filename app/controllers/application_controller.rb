@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   # Permitted custom parameter for devise login and registration
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:name, :avatar, :bg_avatar, :city]
+    devise_parameter_sanitizer.for(:account_update) << [:name, :avatar, :bg_avatar, :city]
   end
 
   protected

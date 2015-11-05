@@ -1,12 +1,18 @@
 <div class="user_forms">
-  <div class="form_header">
-    <span>Welcome In Flapper App</span>
+  <div ng-if="!user.isEdit">
+    <div class="form_header">
+      <span>Welcome In Flapper App</span>
+    </div>
   </div>
   <div class="form_fields">
     <form ng-submit=" regForm.$valid && register()" name="regForm" novalidate class="register_form">
       <fieldset>
-        <legend>Be A Part Of Our Family</legend>
-
+        <div ng-if="!user.isEdit">
+          <legend>Be A Part Of Our Family</legend>
+        </div>
+        <div ng-if="user.isEdit">
+          <legend>Update Profile</legend>
+        </div>
           <div class="form-group">
              <label id="icon" for="name"><span class="glyphicon glyphicon-user"></span></label>
             <input type="text" class="form-control" placeholder="Name" ng-model="user.name" ng-minlength="3" ng-maxlength="25" name="uName" ng-model-options="{ updateOn: ' default blur' }" required ></input>
@@ -45,28 +51,31 @@
             </span>
           </div>
 
-          <div class="form-group">
-            <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
-            <input type="password" class="form-control" placeholder="Password" ng-model="user.password" name="uPassword" required></input>
+          <div ng-if="!user.isEdit">
+            <div class="form-group">
+              <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
+              <input type="password" class="form-control" placeholder="Password" ng-model="user.password" name="uPassword" required></input>
 
-            <span ng-show="regForm.$submitted || regForm.uPassword.$touched && regForm.uPassword.$invalid">
-              <div ng-messages="regForm.uPassword.$error">
-                <span class="error" ng-message="required">Please choose password</span>
-              </div>
-            </span>
+              <span ng-show="regForm.$submitted || regForm.uPassword.$touched && regForm.uPassword.$invalid">
+                <div ng-messages="regForm.uPassword.$error">
+                  <span class="error" ng-message="required">Please choose password</span>
+                </div>
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
+              <input type="password" class="form-control" placeholder=" Confirm Password" ng-model="user.confirm_password" name="uCnfrmPassword" required password-verify></input>
+
+              <span ng-show="regForm.$submitted || regForm.uCnfrmPassword.$touched && regForm.uCnfrmPassword.$invalid">
+                <div ng-messages="regForm.uCnfrmPassword.$error">
+                  <span class="error" ng-message="required">Confirmation Can't be blank</span>
+                  <span class="error" ng-message="passwordVerify">Password confirmation doesn't match</span>
+                </div>
+              </span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label id="icon" for="name"><span class="glyphicon glyphicon-lock"></span></label>
-            <input type="password" class="form-control" placeholder=" Confirm Password" ng-model="user.confirm_password" name="uCnfrmPassword" required password-verify></input>
-
-            <span ng-show="regForm.$submitted || regForm.uCnfrmPassword.$touched && regForm.uCnfrmPassword.$invalid">
-              <div ng-messages="regForm.uCnfrmPassword.$error">
-                <span class="error" ng-message="required">Confirmation Can't be blank</span>
-                <span class="error" ng-message="passwordVerify">Password confirmation doesn't match</span>
-              </div>
-            </span>
-          </div>
           <div class="form-group">
             <div class="user_pic_input">
               <label id="icon" for="name"><span class="glyphicon glyphicon-picture"></span></label>

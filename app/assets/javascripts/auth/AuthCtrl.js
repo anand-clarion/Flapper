@@ -5,6 +5,7 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
   Flash.dismiss();
 
   $scope.user ={}
+  $scope.user.isEdit = false;
 
   // Initilize current user
   Auth.currentUser().then(function (user){

@@ -1,5 +1,5 @@
 //= require angular
-//= require angular-route
+//= require angular-ui-router/release/angular-ui-router.min
 //= require angular-rails-templates
 //= require AngularDevise/lib/devise
 //= require angular-cookies

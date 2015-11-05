@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngRoute', 'ngCookies',  'templates', 'home',
+var app = angular.module("myApp", ['ui.router', 'ngCookies',  'templates', 'home',
                          'posts', 'Devise', 'auth', 'ngMessages', "flash",
                          'users', 'ngFileUpload'
                          ]);
@@ -49,15 +49,17 @@ app.run(function($cookieStore, $rootScope, Auth, $location) {
 })
 
 // Define routes and app configuration.
-app.config(function($routeProvider, $httpProvider){
+app.config(function( $stateProvider, $urlRouterProvider, $httpProvider){
 
   $httpProvider.interceptors.push('authHttpResponseInterceptor');
-  $routeProvider
-    .when('/home', {
+   $stateProvider
+    .state('home', {
+      url: '/home',
       templateUrl: 'home/_home.html',
       controller: "MainCtrl"
     })
-    .when('/login', {
+    .state('login', {
+      url: '/login',
       templateUrl: "auth/_login.html",
       controller: "AuthCtrl",
       resolve: {
@@ -66,8 +68,9 @@ app.config(function($routeProvider, $httpProvider){
         }
       }
     })
-    .when('/register', {
-      templateUrl: "auth/_register.html",
+    .state('register', {
+      url: '/register',
+      templateUrl: "auth/_user_form.html",
       controller: "AuthCtrl",
       resolve: {
         "redirectLoggedInUser": function(checkUser) {
@@ -75,26 +78,36 @@ app.config(function($routeProvider, $httpProvider){
         }
       }
     })
-    .when('/posts', {
+    .state('posts', {
+      url: '/posts',
       templateUrl: "posts/_post_list.html",
       controller: "PostCtrl"
     })
-    .when('/posts/:id', {
+    .state('posts_detail', {
+      url: '/posts/:id',
       templateUrl: "posts/_post_show.html",
       controller: "PostDetailCtrl"
     })
-    .when('/posts/:id/edit', {
+    .state('posts.id.edit', {
+      url: '/edit',
       templateUrl: "posts/_post_show.html",
       controller: "PostEditCtrl"
     })
-    .when("/users/:id", {
+    .state("users", {
+      url: '/users'
+    })
+    .state("user_detail", {
+      url: '/users/:id',
       templateUrl: "users/_user_show.html",
       controller: "UserDetailCtrl"
     })
-    .otherwise({
-      redirectTo:"/home"
+    .state("user_detail.edit", {
+      url: '/edit',
+      templateUrl: "auth/_user_form.html",
+      controller: "UserDetailCtrl"
     })
-})
+    $urlRouterProvider.otherwise("/home");
+  })
 
 // Redirect Logged in user to index page
 app.factory("checkUser", function(Auth, $location){

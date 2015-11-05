@@ -255,22 +255,38 @@ form {
 .user_info_container {
   font-family: Comic Sans MS, cursive, sans-serif;
   color:white;
+  margin-bottom: 65px;
 }
 
-.user_info_container .user_email {
+.user_info_container .user_city, .user_info_container .user_email {
   position: absolute;
   bottom: 0%;
   font-size:24px;
-  margin-left: 15px;
+}
+.user_info_container .user_email {
+   margin-left: 15px;
 }
 
 .user_info_container .user_city {
-  position: absolute;
-  bottom: 0%;
   right:0;
-  font-size:24px;
   margin-right: 15px;
 }
+
+.user_info_container .user_edit_link {
+  position: absolute;
+  left:15px;
+  top: 15px
+}
+
+.user_info_container .user_edit_link a {
+  color:white;
+  font-size: 20px;
+}
+
+.user_info_container .user_edit_link a:hover {
+  font-size: 22px;
+}
+
 
 .user_pic_input {
   float: left;

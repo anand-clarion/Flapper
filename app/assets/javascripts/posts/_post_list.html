@@ -15,7 +15,7 @@
     <tr>
     <tr ng-repeat="post in posts_list | orderBy:order">
       <td ng-show></td>
-      <td><a href="#/posts/{{post.id}}">{{post.title}}</a></td>
+      <td><a ui-sref="posts_detail({id: post.id})">{{post.title}}</a></td>
       <td class="text_center">{{post.likes}}</td>
       <td class="text_center">{{post.user.name}}</td>
       <td class="text_center" >

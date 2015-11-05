@@ -1,6 +1,6 @@
 var post = angular.module("posts", [])
 
-post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $location, Flash, Auth) {
+post.controller("PostCtrl", function($scope, PostData, $http, $stateParams, $location, Flash, Auth) {
 
   Flash.dismiss();
 
@@ -41,11 +41,11 @@ post.controller("PostCtrl", function($scope, PostData, $http, $routeParams, $loc
   }
 });
 
-post.controller('PostDetailCtrl', function($scope, $routeParams, $http, $location, Flash) {
+post.controller('PostDetailCtrl', function($scope, $stateParams, $http, $location, Flash) {
   $scope.comment = {}
   $scope.comment_list = {}
 
-  $http.get('/posts/' + $routeParams.id + '.json').success(function(data) {
+  $http.get('/posts/' + $stateParams.id + '.json').success(function(data) {
     $scope.post = data
   })
 

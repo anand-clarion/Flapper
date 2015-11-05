@@ -1,5 +1,8 @@
 <div class="user_info_container">
   <div class="user_image_container">
+    <div class="user_edit_link">
+      <a ui-sref="user_detail.edit({id: user.id})"><span class="glyphicon glyphicon-pencil" title="Edit Profile"></span></a>
+    </div>
     <div class="user_bg_image">
       <img src="{{user.avatar_url.background}}">
     </div>
@@ -17,3 +20,4 @@
     </div>
   </div>
 </div>
+<div ui-view></div>
