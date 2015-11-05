@@ -62,20 +62,20 @@ app.config(function( $stateProvider, $urlRouterProvider, $httpProvider){
       url: '/login',
       templateUrl: "auth/_login.html",
       controller: "AuthCtrl",
-      resolve: {
-        "redirectLoggedInUser": function(checkUser) {
-          return checkUser.isLoggedIn()
-        }
+      onEnter: function(Auth, $location) {
+        Auth.currentUser().then(function(){
+          $location.path('/posts')
+        })
       }
     })
     .state('register', {
       url: '/register',
       templateUrl: "auth/_user_form.html",
       controller: "AuthCtrl",
-      resolve: {
-        "redirectLoggedInUser": function(checkUser) {
-          return checkUser.isLoggedIn()
-        }
+      onEnter: function(Auth, $location) {
+        Auth.currentUser().then(function(){
+          $location.path('/posts')
+        })
       }
     })
     .state('posts', {
@@ -108,15 +108,4 @@ app.config(function( $stateProvider, $urlRouterProvider, $httpProvider){
     })
     $urlRouterProvider.otherwise("/home");
   })
-
-// Redirect Logged in user to index page
-app.factory("checkUser", function(Auth, $location){
-  return {
-    isLoggedIn: function() {
-      Auth.currentUser().then(function(){
-        $location.path('/posts')
-      })
-    }
-  }
-})
 
