@@ -4,11 +4,6 @@ post.controller("PostCtrl", function($scope, PostData, $http, $stateParams, $loc
 
   Flash.dismiss();
 
-  // Initilize current user
-    Auth.currentUser().then(function(user) {
-      $scope.current_user = user
-    })
-
   $scope.post = {}
 
   // Get All Posts

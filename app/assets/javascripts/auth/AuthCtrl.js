@@ -3,14 +3,8 @@ var auth = angular.module("auth", [])
 auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cookieStore, Flash, Upload) {
 
   Flash.dismiss();
-
   $scope.user ={}
   $scope.user.isEdit = false;
-
-  // Initilize current user
-  Auth.currentUser().then(function (user){
-    $scope.current_user = user
-  });
 
   // User log In
   $scope.logIn = function() {
@@ -45,7 +39,6 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
       $location.path('/home')
       message = "Hey <b>" + previous_user.name + " </b> You Have Been Logged Out"
       Flash.create('success', message);
-
     })
   }
 
