@@ -1,6 +1,6 @@
-<div class="collapse navbar-collapse pull-left" ng-controller="AuthCtrl">
+<div class="collapse navbar-collapse pull-left">
   <ul class="nav navbar-nav">
-    <li ng-show="isSignedIn" class="user_name"><a ui-sref="user_detail({id:current_user.id})">Hi {{ current_user.name }}</a></li>
+    <li ng-show="isSignedIn" class="user_name"><a ui-sref="user_detail({id:current_user.info.id})">Hi {{ current_user.info.name }}</a></li>
   </ul>
 </div>
 

@@ -26,6 +26,7 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
       data: { user: $scope.user},
     }).then(function (resp) {
       $rootScope.isSignedIn = true
+      $scope.current_user.info = resp.config.data.user;
       $location.path('/posts')
       message = "Welcome <b>" + resp.data.name + "</b>"
       Flash.create('success', message);
@@ -43,15 +44,19 @@ auth.controller("AuthCtrl", function($scope, $rootScope, Auth, $location, $cooki
   }
 
   $scope.$on('devise:new-registration', function (e, current_user){
-    $scope.current_user = current_user;
+    $scope.current_user.info = current_user;
+  });
+
+  $scope.$on('devise:new-session', function (e, current_user){
+    $scope.current_user.info = current_user;
   });
 
   $scope.$on('devise:login', function (e, current_user){
-    $scope.current_user = current_user;
+    $scope.current_user.info = current_user;
   });
 
   $scope.$on('devise:logout', function (e, current_user){
-    $scope.current_user = {};
+    $scope.current_user.info = {};
   });
 
 })

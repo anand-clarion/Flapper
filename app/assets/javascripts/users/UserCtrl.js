@@ -15,6 +15,7 @@ user.controller("UserDetailCtrl", function($scope, Auth, Upload, Flash, $http, $
       data: { user: $scope.user},
     }).then(function (resp) {
       $state.go('^',{},{ reload: true, inherit: true, notify: true});
+      $scope.current_user.info  = resp.config.data.user;
       message = "Profile successfully Updated"
       Flash.create('success', message);
     })
