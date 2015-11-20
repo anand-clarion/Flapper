@@ -19,7 +19,7 @@
       <td class="text_center">{{post.likes}}</td>
       <td class="text_center">{{post.user.name}}</td>
       <td class="text_center" >
-        <div ng-if="current_user.name == post.user.name">
+        <div ng-if="current_user.info.id == post.user.id">
           <span title="Delete Post" ng-click = "deletePost(post)"class=" glyphicon glyphicon-trash"></span>
         </div>
       </td>
