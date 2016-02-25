@@ -74,8 +74,5 @@
   ],
   "directories": {},
   "_resolved": "https://registry.npmjs.org/bower/-/bower-1.7.7.tgz",
-  "readme": "ERROR: No README data found!",
-  "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
-  }
+  "readme": "ERROR: No README data found!"
 }
