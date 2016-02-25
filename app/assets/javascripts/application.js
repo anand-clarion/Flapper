@@ -7,4 +7,5 @@
 //= require angular-flash-alert/dist/angular-flash
 //= require ng-file-upload/ng-file-upload
 //= require ng-file-upload/ng-file-upload-shim
+//= require bootstrap
 //= require_tree .

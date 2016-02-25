@@ -24,5 +24,14 @@ module Flapper
     config.active_record.raise_in_transactional_callbacks = true
     config.action_controller.include_all_helpers = true
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.precompile.shift
+
+    config.assets.precompile.push(Proc.new do |path|
+      File.extname(path).in? [
+        '.html', '.erb', '.haml',                 # Templates
+        '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+        '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+      ]
+    end)
   end
 end
